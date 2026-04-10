@@ -1,0 +1,26 @@
+# Секретные файлы и ключи
+.env
+
+# Базы данных (здесь лежат все клиенты и их ПИН-коды)
+*.db
+*.sqlite
+*.sqlite3
+
+# Файлы прайсов и клиентов (исходники)
+*.xlsx
+*.xls
+*.csv
+
+# Виртуальные окружения Python
+.venv/
+venv/
+env/
+
+# Различный кэш Python и временные файлы
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+htmlcov/
+.DS_Store
