@@ -18,6 +18,31 @@ Allows users to authorize via PIN code, browse a multilingual catalog, add items
 - **Flexible Order Delivery:** Orders can be pushed directly to configured Telegram admin accounts and/or sent via Email (SMTP) based on the business owner's preference. Excel files are automatically generated.
 - **Instant Callback Info:** Both Telegram and Email notifications prominently feature the client's contact phone number, allowing the manager to instantly call back and confirm the order.
 
+## 📸 App Screenshots
+
+<table>
+  <tr>
+    <td align="center"><b>Login & Auth</b></td>
+    <td align="center"><b>Product Catalog</b></td>
+    <td align="center"><b>Shopping Cart</b></td>
+  </tr>
+  <tr>
+    <td><img src="images/login.png" width="250"></td>
+    <td><img src="images/Catalog.png" width="250"></td>
+    <td><img src="images/Cart.png" width="250"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Checkout Order</b></td>
+    <td align="center"><b>Confirmation</b></td>
+    <td align="center"><b>Manager Commands</b></td>
+  </tr>
+  <tr>
+    <td><img src="images/Order.png" width="250"></td>
+    <td><img src="images/Confirm.png" width="250"></td>
+    <td><img src="images/Comands.png" width="250"></td>
+  </tr>
+</table>
+
 ---
 
 ## 🛠 Setup & Launch
@@ -80,6 +105,31 @@ The `.xlsx` file must contain these columns:
 - **Корзина заказов:** Подсчет суммы в реальном времени и редактирование количества.
 - **Гибкая доставка заказов:** По выбору владельца бизнеса, оформленные заказы (с Excel-файлом) могут приходить напрямую администраторам в Telegram, либо отправляться классическим Email-письмом.
 - **Мгновенная связь:** И в Telegram-уведомлении, и в Email-письме крупно выводится контактный номер клиента. Это позволяет менеджеру оперативно перезвонить и подтвердить заказ в 1 клик.
+
+## 📸 Галерея интерфейса
+
+<table>
+  <tr>
+    <td align="center"><b>Авторизация</b></td>
+    <td align="center"><b>Каталог товаров</b></td>
+    <td align="center"><b>Корзина</b></td>
+  </tr>
+  <tr>
+    <td><img src="images/login.png" width="250"></td>
+    <td><img src="images/Catalog.png" width="250"></td>
+    <td><img src="images/Cart.png" width="250"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Оформление заказа</b></td>
+    <td align="center"><b>Подтверждение</b></td>
+    <td align="center"><b>Команды менеджера</b></td>
+  </tr>
+  <tr>
+    <td><img src="images/Order.png" width="250"></td>
+    <td><img src="images/Confirm.png" width="250"></td>
+    <td><img src="images/Comands.png" width="250"></td>
+  </tr>
+</table>
 
 ---
 
