@@ -30,6 +30,9 @@ class AdminStates(StatesGroup):
     waiting_for_users_excel = State()
     waiting_for_catalog_excel = State()
 
+class ITRequestStates(StatesGroup):
+    waiting_for_it_request = State()
+
 async def get_lang(message_or_call, state: FSMContext) -> str:
     data = await state.get_data()
     if 'lang' in data:
@@ -97,6 +100,32 @@ async def handle_catalog_excel(message: Message, state: FSMContext):
 
 
 # --- АВТОРИЗАЦИЯ 2.0 И ЯЗЫК ---
+@router.message(Command("developer"))
+async def cmd_developer(message: Message, state: FSMContext):
+    lang = await get_lang(message, state)
+    await state.set_state(ITRequestStates.waiting_for_it_request)
+    await message.answer(get_text(lang, 'developer_info'), parse_mode="Markdown")
+
+@router.message(ITRequestStates.waiting_for_it_request, F.text)
+async def handle_it_request_text(message: Message, state: FSMContext):
+    lang = await get_lang(message, state)
+    user = message.from_user
+    user_link = f"[{user.first_name}](tg://user?id={user.id})"
+    username = user.username or "Скрыт"
+    
+    if config.get_admin_it_ids:
+        msg_text = get_text('ru', 'it_request_notification', user_link=user_link, username=username, text=message.text)
+        for admin_id in config.get_admin_it_ids:
+            try:
+                await bot.send_message(admin_id, msg_text, parse_mode="Markdown")
+            except Exception as e:
+                print(f"Failed to send IT request to admin {admin_id}: {e}")
+    else:
+        print("Предупреждение: ADMIN_IT_IDS не настроены! Заявка потеряна.")
+
+    await state.set_state(None)
+    await message.answer(get_text(lang, 'it_request_success'), parse_mode="Markdown")
+
 @router.message(Command("set_language"))
 async def cmd_set_language(message: Message, state: FSMContext):
     lang = await get_lang(message, state)
@@ -191,7 +220,7 @@ async def cmd_catalog(message: Message, state: FSMContext):
     kb, total, total_pages = build_catalog_keyboard(offset=0, query=None, lang=lang)
     await message.answer(get_text(lang, 'catalog_title', total=total), reply_markup=kb)
 
-@router.message(F.text & ~F.state(AdminStates.waiting_for_users_excel) & ~F.state(AdminStates.waiting_for_catalog_excel))
+@router.message(F.text & ~F.state(AdminStates.waiting_for_users_excel) & ~F.state(AdminStates.waiting_for_catalog_excel) & ~F.state(ITRequestStates.waiting_for_it_request))
 async def handle_search_text(message: Message, state: FSMContext):
     lang = await get_lang(message, state)
     data = await state.get_data()
