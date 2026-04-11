@@ -1,7 +1,10 @@
 import sqlite3
+import os
 from typing import List, Dict, Optional, Tuple
 
-DB_PATH = "bot_database.db"
+DATA_DIR = os.getenv("DATA_DIR", ".")
+os.makedirs(DATA_DIR, exist_ok=True)
+DB_PATH = os.path.join(DATA_DIR, "bot_database.db")
 
 def get_connection():
     return sqlite3.connect(DB_PATH)
