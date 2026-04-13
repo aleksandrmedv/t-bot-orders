@@ -13,13 +13,9 @@ def init_db():
     with get_connection() as conn:
         cursor = conn.cursor()
         
-        # Обновляем таблицы: сносим старые для миграции схемы
-        cursor.execute("DROP TABLE IF EXISTS users")
-        cursor.execute("DROP TABLE IF EXISTS products")
-        
-        # Таблица пользователей (с телефоном)
+        # Создаем таблицы для пользователей, если их еще нет
         cursor.execute('''
-        CREATE TABLE users (
+        CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             pin TEXT NOT NULL,
@@ -28,9 +24,9 @@ def init_db():
         )
         ''')
         
-        # Таблица товаров (БЕЗ региона)
+        # Создаем таблицы для товаров, если их еще нет
         cursor.execute('''
-        CREATE TABLE products (
+        CREATE TABLE IF NOT EXISTS products (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             name_lower TEXT NOT NULL,
