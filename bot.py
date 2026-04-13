@@ -110,14 +110,14 @@ async def cmd_developer(message: Message, state: FSMContext):
 async def handle_it_request_text(message: Message, state: FSMContext):
     lang = await get_lang(message, state)
     user = message.from_user
-    user_link = f"[{user.first_name}](tg://user?id={user.id})"
-    username = user.username or "Скрыт"
+    user_name = user.full_name or "Неизвестно"
+    username_str = f"@{user.username}" if user.username else "Скрыт"
     
     if config.get_admin_it_ids:
-        msg_text = get_text('ru', 'it_request_notification', user_link=user_link, username=username, text=message.text)
+        msg_text = get_text('ru', 'it_request_notification', user_name=user_name, username=username_str, text=message.text)
         for admin_id in config.get_admin_it_ids:
             try:
-                await bot.send_message(admin_id, msg_text, parse_mode="Markdown")
+                await bot.send_message(admin_id, msg_text)
             except Exception as e:
                 print(f"Failed to send IT request to admin {admin_id}: {e}")
     else:
@@ -140,8 +140,17 @@ async def cmd_start(message: Message, state: FSMContext):
     if user_data.get("authenticated", False):
         await message.answer(get_text(lang, 'welcome_back', name=user_data.get('name')))
         return
-    await state.set_state(AuthStates.waiting_for_pin)
     await message.answer(get_text(lang, 'welcome_init'))
+
+@router.message(Command("pin"))
+async def cmd_pin(message: Message, state: FSMContext):
+    lang = await get_lang(message, state)
+    user_data = await state.get_data()
+    if user_data.get("authenticated", False):
+        await message.answer(get_text(lang, 'welcome_back', name=user_data.get('name')))
+        return
+    await state.set_state(AuthStates.waiting_for_pin)
+    await message.answer(get_text(lang, 'pin_prompt'))
 
 @router.message(AuthStates.waiting_for_pin)
 async def request_pin(message: Message, state: FSMContext):

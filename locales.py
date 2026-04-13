@@ -7,7 +7,8 @@ TRANSLATIONS = {
         'update_catalog_prompt': 'Пожалуйста, отправьте Excel файл с каталогом товаров (.xlsx).\nКолонки: name, price.',
         'catalog_updated': '✅ Каталог успешно обновлен. Загружено {count} позиций.',
         'welcome_back': '✅ Добро пожаловать, {name}!\n\nДоступные команды:\n/catalog - Полный каталог товаров\n/cart - Ваша корзина\n/set_language - Сменить язык\n/logout - Выйти\n\n🔍 *Чтобы найти товар, просто напишите его название в этот чат!*',
-        'welcome_init': 'Добро пожаловать в закрытый каталог клуба заказа!\n\n🔑 Пожалуйста, введите ваш ПИН-код (пароль):\n\n---\n*Бот разработан Александром Медведевым (при поддержке Antigraviti).* \nЕсли вы хотите заказать себе такого же Telegram-бота или любую другую ИТ-услугу — просто отправьте команду /developer',
+        'welcome_init': 'Добро пожаловать в закрытый каталог клуба заказа!\n-------\nБот разработан Александром Медведевым.\nЕсли вы хотите заказать Телеграмм Бот или любую другую ИТ услугу просто отправьте команду /developer\n-------\nПожалуйста введите ПИН-код /pin',
+        'pin_prompt': '🔑 Пожалуйста, введите ваш ПИН-код:',
         'auth_success': '✅ Успешная авторизация!\nВы вошли как: {name}.\nКонтакт: {phone}.\nИнформация: {region}\n\nНажмите /catalog чтобы выбрать товары, или просто напишите мне название товара для поиска!',
         'auth_fail': '❌ Неверный пароль. Попробуйте еще раз. Введите пароль:',
         'logout_msg': 'Вы вышли из системы. Введите /start чтобы войти снова.',
@@ -47,7 +48,7 @@ TRANSLATIONS = {
         'lang_changed': '🌍 Язык успешно изменен на Русский!',
         'developer_info': '👨‍💻 **ЗАКАЗ ИТ-УСЛУГ**\n\nЭтот бот разработан **Александром Медведевым** *(Antigraviti)*.\nЯ занимаюсь разработкой Telegram-ботов любой сложности и автоматизацией бизнес-процессов.\n\n👇 **Напишите прямо сюда в чат описание вашей идеи или какую услугу вы хотите заказать.** (Текст должен быть в одном сообщении).\n\nЯ сохраню вашу заявку и свяжусь с вами!',
         'it_request_success': '✅ **Ваша заявка успешно отправлена разработчику!** Я свяжусь с вами в ближайшее время.',
-        'it_request_notification': '🔔 **Новая заявка на ИТ-услуги!**\n\nОт пользователя: {user_link}\nНикнейм: @{username}\n\n📝 **Текст заявки:**\n{text}'
+        'it_request_notification': 'Имя : {user_name}\nUsername: {username}\nПользователь хочет обсудить заказ\n"{text}"'
     },
     'en': {
         'admin_denied': 'You do not have administrator rights.',
@@ -57,7 +58,8 @@ TRANSLATIONS = {
         'update_catalog_prompt': 'Please send the catalog Excel file (.xlsx).\nColumns: name, price.',
         'catalog_updated': '✅ Catalog updated successfully. {count} items loaded.',
         'welcome_back': '✅ Welcome back, {name}!\n\nAvailable commands:\n/catalog - Full catalog\n/cart - Your cart\n/set_language - Change language\n/logout - Logout\n\n🔍 *To find a product, simply type its name in this chat!*',
-        'welcome_init': 'Welcome to the private catalog!\n\n🔑 Please enter your PIN code (password):\n\n---\n*Bot developed by Aleksandr Medvedev (powered by Antigraviti).* \nIf you want to order your own Telegram bot or any other IT service, simply send the /developer command',
+        'welcome_init': 'Welcome to the private catalog!\n-------\nBot developed by Aleksandr Medvedev.\nIf you want to order a Telegram Bot or any other IT service just send the /developer command\n-------\nPlease enter your PIN-code /pin',
+        'pin_prompt': '🔑 Please enter your PIN-code:',
         'auth_success': '✅ Successful authorization!\nLogged in as: {name}.\nContact: {phone}.\nInfo: {region}\n\nClick /catalog to choose products, or just type a product name to search!',
         'auth_fail': '❌ Invalid password. Try again. Enter password:',
         'logout_msg': 'You have been logged out. Type /start to login again.',
@@ -97,7 +99,7 @@ TRANSLATIONS = {
         'lang_changed': '🌍 Language successfully changed to English!',
         'developer_info': '👨‍💻 **ORDER IT SERVICES**\n\nThis bot was developed by **Aleksandr Medvedev** *(Antigraviti)*.\nI specialize in developing Telegram bots of any complexity and business automation.\n\n👇 **Please write a description of your idea or the service you want to order right here in the chat.** (The text should be in one message).\n\nI will save your request and contact you shortly!',
         'it_request_success': '✅ **Your request has been successfully sent to the developer!** I will contact you shortly.',
-        'it_request_notification': '🔔 **New IT Service Request!**\n\nFrom user: {user_link}\nUsername: @{username}\n\n📝 **Request Text:**\n{text}'
+        'it_request_notification': 'Name : {user_name}\nUsername: {username}\nUser wants to discuss an order\n"{text}"'
     }
 }
 
